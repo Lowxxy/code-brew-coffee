@@ -1,8 +1,7 @@
-CODE BREW — targeted changes
+CODE BREW V10 - TWO CHANGES ONLY
 
-1. Header only: shows codebrew-header-logo.png, copied from the supplied logo-primary(1).png (cup, wings, CODE BREW and coffee subtitle).
-2. Removed both floating hero bubbles: COFFEE IS CALLING and BREWED TO BRING YOU BACK.
-3. Removed the little MADE FOR THE DAILY GRIND slogan just above the menu logo.
-4. Kept the full hero logo, menu logo, rest of layout and animations unchanged.
+1. Hero cup-and-wings logo enlarged considerably on desktop and mobile. No other logo is altered.
+2. Brown headline marquee changed to two exact repeated segments to ensure seamless full-width looping.
 
-Upload all files inside this folder to the root of your code-brew-coffee GitHub repository.
+Upload ALL files inside this folder to the root of the GitHub repository.
+The updated index.html AND styles.css are both required.

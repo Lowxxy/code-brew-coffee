@@ -756,3 +756,74 @@ body{background:#f6ede1}
 .site-header .brand img { width:auto !important; height:84px !important; max-width:84px !important; max-height:84px !important; }
 .site-header .nav { top:95px !important; }
 }
+
+
+/* V10: ONLY larger hero logo and seamless brown moving ticker. */
+/* The full source logo includes a transparent safety margin; the image element is
+   enlarged without changing the source image or any other logo. */
+.hero-art {
+  min-width: 0;
+  height: 520px !important;
+  overflow: visible !important;
+}
+.hero-art > img {
+  width: clamp(530px, 40vw, 690px) !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  height: auto !important;
+  flex-shrink: 0;
+  transform: translateX(16px);
+  object-fit: contain !important;
+}
+/* Two identical tracks. At halfway, the second is in the EXACT position of
+   the first at the start, avoiding the old visible center-of-screen reset. */
+.ticker {
+  position: relative;
+  overflow: hidden !important;
+  width: 100%;
+}
+.ticker .ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: 200%;
+  padding: 0 !important;
+  gap: 0 !important;
+  animation: cb-seamless-marquee 42s linear infinite !important;
+  will-change: transform;
+}
+.ticker .ticker-segment {
+  display: block;
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: 50vw;
+  white-space: nowrap;
+  padding: 12px 0 !important;
+  font: 800 18px 'Barlow Condensed', sans-serif;
+  letter-spacing: 4px;
+}
+.ticker .ticker-segment span { color: #93d8ff; padding: 0 32px; }
+@keyframes cb-seamless-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (max-width: 1000px) {
+  .hero-art { height: 460px !important; }
+  .hero-art > img { width: clamp(410px, 52vw, 570px) !important; transform: none; }
+}
+@media (max-width: 720px) {
+  .hero-art { height: 390px !important; }
+  .hero-art > img {
+    width: min(96vw, 440px) !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    transform: none;
+  }
+  .ticker .ticker-segment { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker .ticker-track { animation: none !important; }
+}
+/* Disable the original marquee animation on each inner segment. */
+.ticker .ticker-segment { animation: none !important; transform: none !important; }
