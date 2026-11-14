@@ -690,3 +690,17 @@ body{background:#f6ede1}
 .coffee-menu-section-heading p,.coffee-menu-item strong,.cafe-menu-kicker,.cafe-menu-ornament{color:#0866d7!important}
 .menu-section .filter.active{background:#0866d7!important;border-color:#0866d7!important;color:white!important}
 @media(max-width:720px){.site-header{height:106px!important;min-height:106px!important}.site-header .brand{height:94px!important;width:105px!important;min-width:105px!important}.site-header .brand img{height:94px!important;max-width:105px!important}.nav{top:106px!important}.menu-section .menu-ecg{height:220px!important}}
+
+/* CODE BREW V6 — logo-only correction. Use original horizontal artwork, fully padded.
+   Overrides the conflicting tall-logo sizes from V5. */
+.site-header{height:104px!important;min-height:104px!important;padding-top:0!important;padding-bottom:0!important;overflow:visible!important}
+.site-header .brand{width:clamp(240px,22vw,340px)!important;min-width:240px!important;height:100px!important;max-width:none!important;flex-shrink:0!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;overflow:visible!important}
+.site-header .brand img{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:96px!important;object-fit:contain!important;object-position:left center!important;overflow:visible!important}
+.cafe-menu-logo{display:block!important;width:245px!important;height:auto!important;max-width:90%!important;max-height:none!important;object-fit:contain!important;margin:0 auto 12px!important}
+@media(max-width:720px){
+.site-header{height:84px!important;min-height:84px!important}
+.site-header .brand{width:172px!important;min-width:172px!important;height:80px!important}
+.site-header .brand img{width:100%!important;height:auto!important;max-height:78px!important}
+.nav{top:84px!important}
+.cafe-menu-logo{width:190px!important}
+}
