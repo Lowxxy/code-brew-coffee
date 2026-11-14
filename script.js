@@ -15,8 +15,7 @@
     }));
   }
   const filters = [...document.querySelectorAll('.filter')];
-  const cards = [...document.querySelectorAll('.menu-card[data-category]')];
-  const coming = document.querySelector('.coming-card');
+  const cards = [...document.querySelectorAll('.coffee-menu-group[data-category]')];
   filters.forEach(button => button.addEventListener('click', () => {
     const category = button.dataset.filter;
     filters.forEach(item => {
@@ -25,7 +24,6 @@
       item.setAttribute('aria-pressed', String(selected));
     });
     cards.forEach(card => { card.hidden = category !== 'all' && card.dataset.category !== category; });
-    if (coming) coming.hidden = category !== 'all';
   }));
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
