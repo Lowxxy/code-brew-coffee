@@ -649,3 +649,44 @@ body{background:#f6ede1}
   .menu-ecg-line { stroke-width:3.5; opacity:.7; }
 }
 @media(prefers-reduced-motion:reduce) { .menu-ecg svg { animation:none; } }
+
+
+
+/* ============================================================
+   V4: visible full wordmark + real-time heartbeat monitor canvas
+   ============================================================ */
+.site-header { height:96px; min-height:96px; overflow:visible; }
+.site-header .brand { display:flex; width:clamp(230px,22vw,325px); min-width:200px; height:90px; overflow:visible; flex-shrink:0; align-items:center; justify-content:flex-start; }
+.site-header .brand img { display:block; width:100%; height:86px; max-height:none; object-fit:contain; object-position:left center; }
+.menu-section { position:relative; isolation:isolate; overflow:hidden; }
+.menu-section .cafe-menu-shell { position:relative; z-index:2; }
+.menu-section .menu-ecg { position:absolute; left:0; right:0; top:62%; height:285px; width:100%; transform:translateY(-50%); z-index:1; pointer-events:none; opacity:1; overflow:hidden; }
+.menu-section .menu-ecg canvas { display:block; width:100%; height:100%; }
+/* Make the blue explicitly unmistakable across the menu */
+.coffee-menu-section-heading h3 { color:#105bb0; }
+.cafe-paper-top,.cafe-paper-bottom,.cafe-menu-kicker,.cafe-menu-ornament { color:#0866d7; }
+.coffee-menu-special { background:linear-gradient(145deg,#e3f1ff,#f4e4d0); }
+.coffee-menu-num { background:#dcebff; border:1px solid #82b7f0; color:#0866d7; }
+.menu-section .filter.active { background:#0866d7; border-color:#0866d7; }
+@media(max-width:720px) {
+ .site-header { height:82px; min-height:82px; }
+ .site-header .brand { min-width:0; width:190px; height:79px; }
+ .site-header .brand img { height:72px; }
+ .nav { top:82px; }
+ .menu-section .menu-ecg { top:64%; height:200px; }
+}
+@media(prefers-reduced-motion:reduce) { .menu-section .menu-ecg { opacity:.7; } }
+
+
+/* CODE BREW V5 | ACTUAL FULL LOGO / LIVE ECG */
+.site-header{height:140px!important;min-height:140px!important;padding-block:7px!important;overflow:visible!important}
+.site-header .brand{height:126px!important;width:155px!important;min-width:155px!important;max-width:none!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-shrink:0!important;overflow:visible!important}
+.site-header .brand img{width:auto!important;height:124px!important;max-width:155px!important;max-height:none!important;object-fit:contain!important;object-position:center!important;display:block!important;overflow:visible!important}
+.cafe-menu-logo{height:132px!important;width:132px!important;max-height:none!important;object-fit:contain!important;margin:0 auto 12px!important}
+.menu-section .menu-ecg{position:absolute!important;z-index:1!important;top:55%!important;left:0!important;right:0!important;width:100%!important;height:320px!important;transform:translateY(-50%)!important;pointer-events:none!important;opacity:1!important;overflow:hidden!important}
+.menu-section .menu-ecg canvas{width:100%!important;height:100%!important;display:block!important}
+.menu-section .cafe-menu-shell{z-index:2!important;position:relative!important}
+.coffee-menu-section-heading h3{color:#0757bb!important}
+.coffee-menu-section-heading p,.coffee-menu-item strong,.cafe-menu-kicker,.cafe-menu-ornament{color:#0866d7!important}
+.menu-section .filter.active{background:#0866d7!important;border-color:#0866d7!important;color:white!important}
+@media(max-width:720px){.site-header{height:106px!important;min-height:106px!important}.site-header .brand{height:94px!important;width:105px!important;min-width:105px!important}.site-header .brand img{height:94px!important;max-width:105px!important}.nav{top:106px!important}.menu-section .menu-ecg{height:220px!important}}

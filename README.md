@@ -1,57 +1,7 @@
-# Code Brew Coffee — GitHub Pages Website
+# CODE BREW website - V5 actual fix
 
-A responsive, launch-ready **preview website** for Code Brew Coffee, using the five supplied logos.
+Upload the **contents of this folder** to the ROOT of your GitHub Pages publishing branch, overwriting previous files.
 
-## Publish on GitHub Pages
+V5 visibly changes the header to the complete original cup-and-wings logo in `codebrew-header-complete.png`, increases the header height, changes the menu logo to match, and replaces the scrolling trace with a continuously updated ECG waveform and glowing moving scanner.
 
-1. Create a new **public** GitHub repository (for example `code-brew-coffee`).
-2. Upload **all contents of this folder** into the repository root: `index.html`, `styles.css`, `script.js`, and the `assets` folder with all five images.
-3. Go to your repository's **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch** → branch **main** → folder **/(root)** → **Save**.
-5. Your URL will be `https://YOUR-USERNAME.github.io/code-brew-coffee/` when GitHub Pages deployment finishes.
-
-You can also open `index.html` locally on a computer to preview the site before publishing.
-
-## Logo usage
-
-- `assets/logo-primary.png` — full logo with “coffee”; in the Our Story section.
-- `assets/logo-no-subtitle.png` — logo without “coffee”; footer.
-- `assets/logo-mark.png` — standalone winged coffee IV; hero and favicon.
-- `assets/logo-secondary.png` — smaller vertical wing / IV symbol; menu card and opening soon.
-- `assets/logo-wordmark.png` — winged Code Brew text; navigation header.
-
-All images are transparent PNGs, processed from the five images supplied for this project.
-
-## Edit the menu later
-
-Open `index.html`. Each item uses a line like:
-
-`<div class="menu-line"><span>________________________</span><strong>$0.00</strong></div>`
-
-Replace the underscores with an item name and `$0.00` with its actual price. Edit section titles and descriptions in each `<article class="menu-card">` as needed. The filtering buttons already work. `data-category="coffee"`, `"refreshers"`, or `"extras"` control which cards display when a filter is selected.
-
-## Photos
-
-The featured image area currently uses designed placeholder tiles. Once real product photography is ready, replace a `.photo-slot`'s content with an `<img>` tag and apply a new CSS rule for sizing/cropping.
-
-## Before opening
-
-- This is an **informational menu mockup**. There is no checkout or real pricing.
-- The **Save a Reminder** button opens the visitor's own email app with a reminder draft; it is **not** a subscriber collection system. A mailing-list provider can be connected later.
-- No business email, address, social accounts, or launch date were invented.
-- Update policies, menu and contact details before taking orders.
-
-## Files
-
-- `index.html` — entire one-page website
-- `styles.css` — desktop and mobile styling
-- `script.js` — working menu filters and mobile navigation
-- `assets/` — five transparent logos
-
-
-## November 14, 2026 update: full logo + blue menu + moving ECG
-- `logo-wordmark-full.png` contains the original winged logo with transparent margins so its tips do not clip.
-- Header and menu intro now use that padded original logo.
-- Menu retains all existing categories, placeholders, links, and filters while adding matching blue accents.
-- Blue animated SVG pulse scrolls behind the menu paper; it is non-interactive and respects reduced-motion settings.
-- To deploy, upload/replace the files in this folder at the repository root, including the new PNG.
+If the page still looks identical, open your live site, view source, and search for `CODEBREW-REALFIX-20261114-5`. If absent, GitHub Pages is serving a different branch or folder from where the files were uploaded. Check Settings > Pages > Build and deployment > Branch.

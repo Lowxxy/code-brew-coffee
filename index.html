@@ -10,13 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261114-blue-pulse-v2">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=CODEBREW-REALFIX-20261114-5">
+  <script src="script.js?v=CODEBREW-REALFIX-20261114-5" defer></script>
 </head>
 <body>
   <div class="announcement"><span class="pulse-dot"></span> IN DEVELOPMENT <span class="sep">/</span> SOMETHING GOOD IS BREWING <span class="pulse-dot"></span></div>
   <header class="site-header" id="home">
-    <a href="#home" class="brand" aria-label="Code Brew Coffee home"><img src="logo-wordmark-full.png" alt="Code Brew winged wordmark" /></a>
+    <a href="#home" class="brand" aria-label="Code Brew Coffee home"><img src="codebrew-header-complete.png?v=5" width="128" height="136" alt="Complete Code Brew Coffee logo: cup, steam, blue wings and lettering" /></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
     <nav id="primary-nav" class="nav" aria-label="Main navigation"><a href="#home" class="active">Home</a><a href="#menu">The Menu</a><a href="#story">Our Story</a><a href="#launch">Opening Soon</a></nav>
     <a class="header-cta" href="#launch">GET THE UPDATE <span aria-hidden="true">↗</span></a>
@@ -45,15 +45,11 @@
     </section>
     <div class="ticker" aria-hidden="true"><div>YOUR DAILY DOSE OF SURVIVAL <span>✦</span> BREWED WITH HEART <span>✦</span> LIFE SUPPORT FOR YOUR MORNING <span>✦</span> YOUR DAILY DOSE OF SURVIVAL <span>✦</span></div></div>
     <section class="menu-section section-pad" id="menu" aria-labelledby="menu-heading">
-      <div class="menu-ecg" aria-hidden="true">
-        <svg viewBox="0 0 2400 240" preserveAspectRatio="none" focusable="false">
-          <path class="menu-ecg-line" d="M0 120 L95 120 L125 120 L145 112 L165 120 L200 120 L225 120 L240 80 L262 151 L285 120 L350 120 L390 120 L410 95 L432 120 L470 120 L520 120 L550 150 L585 120 L635 120 L680 120 L705 108 L733 120 L775 120 L818 120 L858 172 L888 16 L924 202 L953 120 L1005 120 L1022 96 L1044 120 L1100 120 L1150 120 L1200 120 M1200 120 L1295 120 L1325 120 L1345 112 L1365 120 L1400 120 L1425 120 L1440 80 L1462 151 L1485 120 L1550 120 L1590 120 L1610 95 L1632 120 L1670 120 L1720 120 L1750 150 L1785 120 L1835 120 L1880 120 L1905 108 L1933 120 L1975 120 L2018 120 L2058 172 L2088 16 L2124 202 L2153 120 L2205 120 L2222 96 L2244 120 L2300 120 L2350 120 L2400 120" />
-        </svg>
-      </div>
+      <div class="menu-ecg" aria-hidden="true"><canvas id="codebrew-live-ecg"></canvas></div>
       <div class="cafe-menu-shell">
         <div class="cafe-menu-intro">
           <span class="cafe-menu-ornament" aria-hidden="true">✦ &nbsp; MADE FOR THE DAILY GRIND &nbsp; ✦</span>
-          <img class="cafe-menu-logo" src="logo-wordmark-full.png" alt="Code Brew Coffee" />
+          <img class="cafe-menu-logo" src="codebrew-header-complete.png?v=5" alt="Code Brew Coffee" />
           <p class="cafe-menu-kicker">THE COFFEEHOUSE MENU</p>
           <h2 id="menu-heading">A little brew. <em>A lot of life.</em></h2>
           <p class="cafe-menu-lede">An early look at the drinks and treats we're dreaming up.<br>Real selections, photos, and prices are coming before opening day.</p>
