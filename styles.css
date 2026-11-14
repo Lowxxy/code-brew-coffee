@@ -827,3 +827,92 @@ body{background:#f6ede1}
 }
 /* Disable the original marquee animation on each inner segment. */
 .ticker .ticker-segment { animation: none !important; transform: none !important; }
+
+
+/* ============================================================
+   V11 MOBILE UX: changes apply ONLY at phone-sized screens.
+   Desktop styling and imagery are intentionally unchanged.
+   ============================================================ */
+@media (max-width: 720px) {
+  html { scroll-padding-top: 86px; }
+  body { overflow-x: clip; }
+  .site-header { height: 82px !important; min-height: 82px !important; padding: 0 19px !important; }
+  .site-header .brand { height: 77px !important; width: 76px !important; min-width: 76px !important; max-width: 76px !important; }
+  .site-header .brand img { height: 72px !important; max-width: 76px !important; max-height: 72px !important; width: auto !important; }
+  .site-header .nav { top: 82px !important; }
+
+  /* Hero: logo becomes a comfortable accent, not another full-screen panel. */
+  .hero { min-height: 0 !important; }
+  .hero-content { padding: 40px 22px 74px !important; }
+  .hero-columns { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
+  .hero .eyebrow { font-size: 9px; letter-spacing: 1.5px; }
+  .hero-copy h1 { font-size: clamp(60px, 14.5vw, 78px) !important; line-height: .89 !important; margin: 24px 0 18px !important; }
+  .hero-copy p { font-size: 13px !important; line-height: 1.65; }
+  .hero-actions { margin-top: 21px !important; gap: 13px !important; }
+  .hero-actions .btn { padding: 14px 15px !important; font-size: 10px; }
+  .hero-actions .text-link { font-size: 9px; }
+  .hero-note { margin-top: 22px !important; padding: 9px 12px; }
+  .hero-art { height: 234px !important; margin-top: 12px !important; min-width: 0 !important; overflow: visible !important; }
+  .hero-art > img {
+    display: block !important;
+    width: min(66vw, 240px) !important;
+    max-width: min(66vw, 240px) !important;
+    height: auto !important;
+    max-height: 225px !important;
+    min-width: 0 !important;
+    transform: none !important;
+    object-fit: contain !important;
+    flex-shrink: 1 !important;
+  }
+  .hero-bottom { padding: 12px 20px !important; }
+
+  /* Menu: less vertical padding; single, comfortably readable column. */
+  .menu-section { padding: 46px 13px 58px !important; }
+  .cafe-menu-intro { padding: 0 6px 12px !important; }
+  .cafe-menu-logo { width: 150px !important; max-width: 150px !important; height: auto !important; }
+  .cafe-menu-kicker { font-size: 9px !important; letter-spacing: 2px !important; }
+  .cafe-menu-intro h2 { font-size: clamp(31px, 8.2vw, 39px) !important; line-height: 1.15 !important; }
+  .cafe-menu-lede { font-size: 12px !important; line-height: 1.55 !important; }
+  .cafe-menu-status { font-size: 9px !important; letter-spacing: .6px !important; padding: 8px 12px !important; }
+
+  /* One swipeable row of easy-to-tap category filters. */
+  .cafe-menu-filter-wrap { display: block !important; width: 100%; margin: 13px 0 19px !important; }
+  .menu-section .menu-filters {
+    display: flex !important; flex-wrap: nowrap !important; gap: 8px !important;
+    justify-content: flex-start !important; overflow-x: auto !important;
+    overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity; scrollbar-width: none;
+    padding: 4px 2px 8px !important;
+  }
+  .menu-section .menu-filters::-webkit-scrollbar { display: none; }
+  .menu-section .filter {
+    flex: 0 0 auto !important; white-space: nowrap !important;
+    scroll-snap-align: start; min-height: 42px !important;
+    padding: 10px 16px !important; font-size: 12px !important;
+  }
+  .coffee-menu-paper { border-radius: 8px; }
+  .coffee-menu-paper::before { inset: 8px !important; }
+  .cafe-paper-top { padding: 17px 15px 6px !important; font-size: 8px !important; gap: 6px !important; }
+  .coffee-menu-columns { grid-template-columns: minmax(0,1fr) !important; gap: 19px !important; padding: 20px 22px 28px !important; }
+  .coffee-menu-group { padding-bottom: 15px !important; }
+  .coffee-menu-section-heading { gap: 11px !important; }
+  .coffee-menu-num { width: 32px !important; height: 32px !important; font-size: 16px !important; }
+  .coffee-menu-section-heading h3 { font-size: 26px !important; }
+  .coffee-menu-section-heading p { font-size: 9px !important; }
+  .coffee-menu-subline { font-size: 12px !important; margin: 10px 0 12px !important; }
+  .coffee-menu-item { min-height: 30px !important; }
+  .coffee-menu-placeholder { font-size: 10px !important; max-width: 57% !important; }
+  .coffee-menu-item strong { font-size: 12px !important; }
+  .coffee-menu-new { margin-top: 10px !important; padding: 8px 10px !important; }
+  .coffee-menu-special { min-height: 160px !important; padding: 18px !important; }
+  .cafe-paper-bottom { padding: 16px 12px 22px !important; margin: 0 14px !important; }
+  .menu-section .menu-ecg { opacity: .48 !important; }
+}
+@media (max-width: 390px) {
+  .hero-content { padding-inline: 17px !important; }
+  .hero-art { height: 211px !important; }
+  .hero-art > img { width: min(65vw, 215px) !important; max-width: min(65vw, 215px) !important; max-height: 205px !important; }
+  .hero-actions { gap: 9px !important; }
+  .hero-actions .btn { font-size: 9px; }
+  .coffee-menu-columns { padding-left: 19px !important; padding-right: 19px !important; }
+}

@@ -1,7 +1,5 @@
-CODE BREW V10 - TWO CHANGES ONLY
+CODE BREW V11 - mobile-only polish.
 
-1. Hero cup-and-wings logo enlarged considerably on desktop and mobile. No other logo is altered.
-2. Brown headline marquee changed to two exact repeated segments to ensure seamless full-width looping.
+Desktop matches V10. Phone screens use a smaller main logo, reduced vertical spacing, and horizontal swipeable menu category buttons.
 
-Upload ALL files inside this folder to the root of the GitHub repository.
-The updated index.html AND styles.css are both required.
+Upload every file directly into the root of the GitHub Pages repository.
