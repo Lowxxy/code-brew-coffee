@@ -11,7 +11,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=CODEBREW-V11-MOBILE-20261114">
-  <script src="script.js?v=CODEBREW-V12-HEARTSWEEP-20261114" defer></script>
+  <style id="codebrew-ecg-v13-fix">
+    /* Only the ECG background is affected. Existing menu and page layout remain unchanged. */
+    .menu-section { position: relative; isolation: isolate; }
+    .menu-ecg {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+      opacity: 1 !important;
+      display: block !important;
+    }
+    .menu-ecg canvas {
+      display: block !important;
+      position: absolute !important;
+      inset: 0 !important;
+      max-width: none !important;
+    }
+    .menu-section .cafe-menu-shell { position: relative; z-index: 2; }
+    @media (prefers-reduced-motion: reduce) {
+      .menu-ecg { opacity: .65 !important; }
+    }
+  </style>
+
+  <script src="script.js?v=CODEBREW-V13-ACTUAL-BEATS-20261114" defer></script>
 </head>
 <body>
   <div class="announcement"><span class="pulse-dot"></span> IN DEVELOPMENT <span class="sep">/</span> SOMETHING GOOD IS BREWING <span class="pulse-dot"></span></div>

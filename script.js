@@ -60,218 +60,131 @@
   function initLiveECG() {
     const canvas = document.getElementById('codebrew-live-ecg');
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
-    const parent = canvas.parentElement;
-    if (!ctx || !parent) return;
+    if (!ctx) return;
+    const container = canvas.parentElement;
 
-    const lineColor = '#1368ee';
-    const glowColor = 'rgba(19, 104, 238, 0.18)';
-    const dimColor = 'rgba(19, 104, 238, 0.22)';
-    const headColor = '#8fd4ff';
-    const dpr = Math.max(1, window.devicePixelRatio || 1);
-
-    let width = 0;
-    let height = 0;
-    let baseline = 0;
-    let points = [];
-    let headX = 0;
-    let sweepSpeed = 170; // px / second
-    let previousTime = performance.now();
-    let animationId = null;
-    let sweepCycle = 0;
+    let width = 0, height = 0, dpr = 1, head = 0, last = 0;
+    let raf = null;
+    const speed = 245;
+    let history = [];
+    let lastCycle = 0;
 
     function resize() {
-      const rect = parent.getBoundingClientRect();
-      width = Math.max(320, Math.floor(rect.width));
-      height = Math.max(170, Math.floor(rect.height));
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      const box = container.getBoundingClientRect();
+      width = Math.max(240, Math.round(box.width || window.innerWidth));
+      height = Math.max(190, Math.round(box.height || 300));
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      baseline = height * 0.54;
-      points = buildWavePoints(width, baseline, height);
-      headX = -40;
-      sweepCycle = 0;
+      history = [];
+      head = 0;
+      last = performance.now();
     }
 
-    function buildWavePoints(totalWidth, base, h) {
-      // One authentic-looking ECG sweep: quiet baseline -> P -> QRS -> T -> baseline
-      const usable = Math.max(280, totalWidth * 0.9);
-      const leftPad = (totalWidth - usable) / 2;
-      const p = [];
-      const push = (x, y) => p.push({ x: leftPad + x * usable, y: base + y });
+    // A repeating P-QRS-T beat, with a tall sharp R wave and a distinct S dip.
+    // One beat per 270px means several clearly visible heartbeats per screen.
+    const anchors = [
+      [0.00,0], [0.10,0], [0.14,-0.6],
+      [0.19,-9], [0.23,-12], [0.27,-7], [0.31,0],  // P wave
+      [0.40,0], [0.445,5],                         // Q
+      [0.478,-83],                                 // sharp R spike
+      [0.504,33],                                  // deep S dip
+      [0.544,0], [0.64,0],
+      [0.71,-8], [0.76,-18], [0.80,-17], [0.86,-5], // T wave
+      [0.92,0], [1,0]
+    ];
 
-      // Y values are offsets from baseline.
-      push(0.00, 0);
-      push(0.08, 0);
-      push(0.12, -1);
-      push(0.16, -6);
-      push(0.19, -6);     // P wave peak
-      push(0.22, -1);
-      push(0.27, 0);
-      push(0.35, 0);
-      push(0.395, 0);
-      push(0.415, 6);     // Q dip
-      push(0.44, -52);    // R spike
-      push(0.465, 20);    // S drop
-      push(0.505, 0);
-      push(0.57, 0);
-      push(0.625, -12);
-      push(0.69, -12);    // T wave
-      push(0.755, -2);
-      push(0.82, 0);
-      push(1.00, 0);
-
-      return p;
-    }
-
-    function interpolateY(x) {
-      if (x <= points[0].x) return points[0].y;
-      if (x >= points[points.length - 1].x) return points[points.length - 1].y;
-      for (let i = 1; i < points.length; i++) {
-        const a = points[i - 1];
-        const b = points[i];
-        if (x <= b.x) {
-          const t = (x - a.x) / (b.x - a.x || 1);
-          return a.y + (b.y - a.y) * t;
+    function valueAt(x) {
+      const beatWidth = Math.max(215, Math.min(280, width / 3.5));
+      const fraction = (((x + 52) % beatWidth) + beatWidth) % beatWidth / beatWidth;
+      for (let i = 1; i < anchors.length; i++) {
+        const a = anchors[i-1], b = anchors[i];
+        if (fraction <= b[0]) {
+          const t = (fraction-a[0])/(b[0]-a[0]);
+          // Round the P/T humps lightly, preserve abrupt QRS spikes.
+          const smooth = (i >= 3 && i <= 6) || (i >= 13 && i <= 17)
+            ? t*t*(3-2*t) : t;
+          const amplitude = Math.min(1.28, Math.max(0.75, height/320));
+          return height * 0.51 + (a[1] + (b[1]-a[1])*smooth)*amplitude;
         }
       }
-      return baseline;
+      return height*0.51;
     }
 
-    function pathUntil(limitX) {
-      const clamped = Math.max(0, Math.min(limitX, width));
-      const path = [];
-      path.push({ x: 0, y: baseline });
-
-      for (let i = 0; i < points.length; i++) {
-        const pt = points[i];
-        if (pt.x < clamped) {
-          path.push(pt);
-        } else {
-          const prev = path[path.length - 1] || points[Math.max(0, i - 1)];
-          path.push({ x: clamped, y: interpolateY(clamped) });
-          break;
-        }
-      }
-
-      if (path[path.length - 1].x < clamped) {
-        path.push({ x: clamped, y: interpolateY(clamped) });
-      }
-      return path;
-    }
-
-    function drawPolyline(poly, stroke, lineWidth, glow = false) {
-      if (!poly.length) return;
+    function drawGrid() {
+      ctx.lineWidth = 0.7;
+      ctx.strokeStyle = 'rgba(0,100,220,.045)';
       ctx.beginPath();
-      ctx.moveTo(poly[0].x, poly[0].y);
-      for (let i = 1; i < poly.length; i++) ctx.lineTo(poly[i].x, poly[i].y);
-      ctx.lineJoin = 'round';
-      ctx.lineCap = 'round';
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = lineWidth;
-      if (glow) {
-        ctx.shadowColor = glowColor;
-        ctx.shadowBlur = 14;
-      } else {
-        ctx.shadowBlur = 0;
-      }
+      for (let x=0; x<width; x+=44) {ctx.moveTo(x,0);ctx.lineTo(x,height);}
+      for (let y=0; y<height; y+=44) {ctx.moveTo(0,y);ctx.lineTo(width,y);}
       ctx.stroke();
-      ctx.shadowBlur = 0;
     }
 
-    function drawBackgroundGrid() {
-      ctx.save();
-      ctx.strokeStyle = 'rgba(19,104,238,0.05)';
-      ctx.lineWidth = 1;
-      for (let x = 0; x < width; x += 64) {
-        ctx.beginPath();
-        ctx.moveTo(x + 0.5, 0);
-        ctx.lineTo(x + 0.5, height);
-        ctx.stroke();
+    function draw(now) {
+      const dt=Math.max(0,Math.min((now-last)/1000,0.05));
+      last=now;
+      head+=dt*speed;
+      if (head>width+8) {
+        head=0;
+        history=[];
+        lastCycle++;
       }
-      for (let y = 0; y < height; y += 48) {
-        ctx.beginPath();
-        ctx.moveTo(0, y + 0.5);
-        ctx.lineTo(width, y + 0.5);
-        ctx.stroke();
-      }
-      ctx.restore();
-    }
+      ctx.clearRect(0,0,width,height);
+      drawGrid();
 
-    function drawFrame(now) {
-      const dt = Math.min(0.032, (now - previousTime) / 1000);
-      previousTime = now;
-      headX += sweepSpeed * dt;
-
-      // Reset only after head clears the right side; starts again from left like a real monitor sweep.
-      if (headX > width + 32) {
-        headX = -40;
-        sweepCycle += 1;
-      }
-
-      ctx.clearRect(0, 0, width, height);
-      drawBackgroundGrid();
-
-      // Dim baseline ahead of the sweep so it feels like the monitor is ready, but not fully drawn.
+      // A very faint guide remains in front of the scanning point;
+      // the actual pulse appears only as the glowing tip draws it.
+      ctx.strokeStyle='rgba(0,80,200,.06)';
+      ctx.lineWidth=1;
       ctx.beginPath();
-      ctx.moveTo(0, baseline);
-      ctx.lineTo(width, baseline);
-      ctx.strokeStyle = 'rgba(19,104,238,0.08)';
-      ctx.lineWidth = 2;
+      ctx.moveTo(0,height*.51);
+      ctx.lineTo(width,height*.51);
       ctx.stroke();
 
-      const visiblePath = pathUntil(headX);
-      drawPolyline(visiblePath, lineColor, 4, true);
-
-      // Trailing fade to make it feel like it's actively being drawn.
-      const trailStart = Math.max(0, headX - 180);
-      const trailPath = pathUntil(headX).filter(pt => pt.x >= trailStart);
-      if (trailPath.length) {
-        drawPolyline(trailPath, '#2f86ff', 4.5, true);
+      const visible=Math.max(0,Math.min(width,head));
+      const step=2;
+      if (visible>0) {
+        const drawLine=(startX,endX,stroke,lineWidth,glow)=>{
+          ctx.beginPath();
+          ctx.moveTo(startX,valueAt(startX));
+          for(let x=startX+step;x<endX;x+=step) ctx.lineTo(x,valueAt(x));
+          ctx.lineTo(endX,valueAt(endX));
+          ctx.strokeStyle=stroke;
+          ctx.lineWidth=lineWidth;
+          ctx.lineCap='round';
+          ctx.lineJoin='round';
+          ctx.shadowColor='rgba(0,96,255,.45)';
+          ctx.shadowBlur=glow;
+          ctx.stroke();
+          ctx.shadowBlur=0;
+        };
+        // The existing trace glows softly. The final 110px are brighter.
+        drawLine(0,visible,'#0866d7',4.2,7);
+        drawLine(Math.max(0,visible-110),visible,'#1888ff',5,12);
+        const y=valueAt(visible);
+        const halo=ctx.createRadialGradient(visible,y,0,visible,y,18);
+        halo.addColorStop(0,'rgba(255,255,255,1)');
+        halo.addColorStop(.28,'rgba(74,173,255,.85)');
+        halo.addColorStop(1,'rgba(74,173,255,0)');
+        ctx.fillStyle=halo;
+        ctx.beginPath();ctx.arc(visible,y,18,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#e4f5ff';
+        ctx.beginPath();ctx.arc(visible,y,3.4,0,Math.PI*2);ctx.fill();
       }
-
-      // Sweep head / bright dot.
-      if (headX >= 0 && headX <= width) {
-        const headY = interpolateY(headX);
-        const grad = ctx.createRadialGradient(headX, headY, 0, headX, headY, 20);
-        grad.addColorStop(0, 'rgba(255,255,255,0.95)');
-        grad.addColorStop(0.2, headColor);
-        grad.addColorStop(1, 'rgba(143,212,255,0)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(headX, headY, 20, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = '#d8f2ff';
-        ctx.beginPath();
-        ctx.arc(headX, headY, 3.8, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      animationId = requestAnimationFrame(drawFrame);
+      raf=requestAnimationFrame(draw);
     }
-
-    const ro = typeof ResizeObserver !== 'undefined'
-      ? new ResizeObserver(() => resize())
-      : null;
 
     resize();
-    if (ro) ro.observe(parent);
-    else window.addEventListener('resize', resize);
-    animationId = requestAnimationFrame(drawFrame);
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        if (animationId) cancelAnimationFrame(animationId);
-        animationId = null;
-      } else if (!animationId) {
-        previousTime = performance.now();
-        animationId = requestAnimationFrame(drawFrame);
-      }
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(container);
+    else window.addEventListener('resize',resize);
+    raf=requestAnimationFrame(draw);
+    document.addEventListener('visibilitychange',()=>{
+      if (document.hidden) {cancelAnimationFrame(raf);raf=null;}
+      else if (!raf) {last=performance.now();raf=requestAnimationFrame(draw);}
     });
   }
 })();
