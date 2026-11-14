@@ -533,26 +533,65 @@ body {
 }
 
 
-/* CODE BREW - CIRCULAR WHITE LOGO MEDALLION (2026-11-14) */
-.hero-art > img {
-  width: 340px;
-  height: 340px;
-  max-width: min(340px, 86vw);
-  max-height: none;
-  box-sizing: border-box;
-  object-fit: contain;
-  background: #ffffff;
-  border-radius: 50%;
-  padding: 32px;
-  border: 1px solid #eadcca;
-  box-shadow: 0 22px 48px rgba(78, 52, 29, .19);
-}
-@media (max-width: 720px) {
-  .hero-art > img {
-    width: 276px;
-    height: 276px;
-    max-width: min(276px, 84vw);
-    max-height: none;
-    padding: 25px;
-  }
-}
+/* =============================================================
+   CODE BREW | CAFE MENU EDITION
+   Fresh, warm cafe presentation instead of e-commerce tiles.
+   ============================================================= */
+:root{--espresso:#4e301d;--coffee-brown:#855130;--latte:#d6ad83;--paper:#fffaf1;--vanilla:#f3e5d2;--cafe-blue:#126cba}
+body{background:#f6ede1}
+.hero-grid{opacity:.13}
+.ticker{background:#644127;border-top:1px solid #ae8259;border-bottom:1px solid #ae8259;color:#fff7ed}
+.hero-art>img{aspect-ratio:1 / 1;max-height:330px;max-width:330px;width:80%;height:auto;object-fit:contain;background:#fff;border:10px solid #fff;border-radius:50%;padding:12px;box-shadow:0 22px 45px #503b2826}
+.hero-art::before{border-radius:50%;background:radial-gradient(circle,#fffdf9 28%,#ead7c1 80%,#dfc2a7 100%)}
+.float-label{border-radius:999px;padding:10px 16px;font-size:9px;letter-spacing:1px}
+.hero-note{border-radius:12px;max-width:380px}
+/* Cafe menu is a single print-inspired board, not multiple product boxes. */
+.menu-section{max-width:none;padding:104px max(24px,5vw) 100px;background:linear-gradient(180deg,#e7d0b6 0%,#efe0cb 46%,#f3e6d6 100%);border:0;color:var(--espresso)}
+.menu-section>*{max-width:none;margin-left:0;margin-right:0}
+.cafe-menu-shell{max-width:1120px!important;margin:0 auto!important}
+.cafe-menu-intro{text-align:center;padding:0 20px 24px}
+.cafe-menu-ornament{display:block;color:#8b5936;font-size:10px;letter-spacing:3px;font-weight:800;margin-bottom:16px}
+.cafe-menu-logo{display:block;width:188px;max-height:76px;object-fit:contain;margin:0 auto 12px}
+.cafe-menu-kicker{font-size:11px;font-weight:800;letter-spacing:3px;color:#9d6c49;margin:16px 0 9px}
+.cafe-menu-intro h2{font-family:'DM Serif Display',Georgia,serif!important;font-size:clamp(36px,5vw,66px)!important;line-height:1.1!important;letter-spacing:-1.8px!important;font-weight:400!important;color:#50311d!important;margin:0 0 15px!important}
+.cafe-menu-intro h2 em{font-style:italic;color:#b7763c}
+.cafe-menu-lede{font-size:14px;line-height:1.8;color:#705846;max-width:510px;margin:0 auto 18px}
+.cafe-menu-status{display:inline-flex;align-items:center;gap:9px;border:1px solid #cda57e;background:#fffaf3;border-radius:40px;padding:10px 18px;font-size:10px;letter-spacing:1.5px;color:#91592e;font-weight:800}
+.cafe-menu-status span{color:#267cb8;font-size:16px}
+.cafe-menu-filter-wrap{display:flex;justify-content:center;margin:17px auto 32px}
+.menu-section .menu-filters{display:flex;justify-content:center;gap:10px;margin:0;flex-wrap:wrap}
+.menu-section .filter{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;padding:11px 20px;border:1px solid #be9875;border-radius:50px;background:rgba(255,250,242,.78);color:#6b4b35;transition:background .2s ease,color .2s ease}
+.menu-section .filter.active{background:#684127;border-color:#684127;color:white;box-shadow:0 6px 16px #6841272b}
+.menu-section .filter:hover{border-color:#764728;color:#693f24}
+.menu-section .filter.active:hover{color:white}
+.coffee-menu-paper{background:var(--paper);color:#4e321f;border-radius:8px;border:1px solid #d8b894;box-shadow:0 25px 70px #5a39232d,0 4px 12px #5a392312;overflow:hidden;position:relative}
+.coffee-menu-paper::before{content:'';position:absolute;inset:15px;border:1px solid #e2cbb0;border-radius:2px;pointer-events:none}
+.cafe-paper-top,.cafe-paper-bottom{display:flex;align-items:center;justify-content:center;gap:22px;text-align:center;color:#976d4b;font-size:9px;font-weight:800;letter-spacing:1.8px;padding:28px 26px 20px}
+.cafe-paper-top span:nth-child(2),.cafe-paper-bottom span:nth-child(2){font-size:18px;color:#c58a5b}
+.cafe-paper-bottom{padding:23px 26px 32px;border-top:1px solid #ecddca;margin:0 38px}
+.coffee-menu-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:82px;row-gap:44px;padding:32px 80px 46px}
+.coffee-menu-group{padding:0 0 18px;border-bottom:1px solid #e7d4c0;min-width:0}
+.coffee-menu-section-heading{display:flex;align-items:center;gap:16px;margin-bottom:4px}
+.coffee-menu-num{width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;background:#e8d5bf;color:#865632;font-family:'DM Serif Display',Georgia,serif;font-size:19px}
+.coffee-menu-section-heading h3{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(27px,3vw,35px);line-height:1.1;margin:0;color:#50301c;letter-spacing:-.5px}
+.coffee-menu-section-heading p{margin:5px 0 0;color:#a36a3e;font-weight:700;font-size:10px;letter-spacing:.6px;text-transform:uppercase}
+.coffee-menu-subline{font-family:'DM Serif Display',Georgia,serif;font-style:italic;color:#987e67;font-size:14px;margin:12px 0 15px}
+.coffee-menu-items{display:grid;gap:3px}
+.coffee-menu-item{display:flex;align-items:baseline;gap:9px;min-height:29px;font-size:13px}
+.coffee-menu-placeholder{color:#9d8c7d;letter-spacing:1.7px;white-space:nowrap;overflow:hidden;max-width:60%;font-size:11px}
+.coffee-menu-dots{flex:1;border-bottom:2px dotted #d8bfa9;transform:translateY(-3px);min-width:12px}
+.coffee-menu-item strong{font-size:13px;font-weight:800;color:#54351f;white-space:nowrap}
+.coffee-menu-new{margin-top:16px;font-size:11px;color:#92775e;background:#f3e8da;padding:10px 12px;border-radius:6px;line-height:1.8}
+.coffee-menu-new>span:first-child{color:#a26937;font-weight:800;letter-spacing:.5px;margin-right:4px}
+.coffee-menu-blank{color:#b79a81;letter-spacing:1px}
+.coffee-menu-special{background:#f0e0c9;align-self:stretch;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;border-radius:10px;border:1px solid #dfc2a1}
+.coffee-menu-special-icon{font-size:41px;margin-bottom:10px}
+.coffee-menu-special p{font-family:'DM Serif Display',Georgia,serif;font-size:30px;line-height:1.15;letter-spacing:0;color:#6d4529;margin:0 0 12px}
+.coffee-menu-special small{font-size:12px;line-height:1.5;color:#8a6a4c;max-width:240px}
+.cafe-menu-footnote{color:#775c44;font-size:11px;text-align:center;line-height:1.8;margin:20px auto 0!important;max-width:700px!important}
+.feature-section{background:#f8f0e5}
+.photo-slot{border-radius:14px;background:#fffaf4}
+@media(max-width:850px){.coffee-menu-columns{column-gap:35px;padding:30px 45px 42px}.coffee-menu-section-heading h3{font-size:29px}}
+@media(max-width:620px){.menu-section{padding:72px 16px}.cafe-menu-intro h2{font-size:42px!important}.cafe-menu-lede br{display:none}.cafe-menu-ornament{letter-spacing:1.5px;font-size:9px}.coffee-menu-columns{grid-template-columns:1fr;gap:26px;padding:24px 28px 28px}.coffee-menu-paper::before{inset:9px}.cafe-paper-top,.cafe-paper-bottom{font-size:8px;letter-spacing:.5px;gap:8px;padding-left:12px;padding-right:12px}.cafe-paper-bottom{margin:0 20px}.coffee-menu-section-heading h3{font-size:31px}.coffee-menu-special{min-height:210px}.hero-art>img{max-height:280px;max-width:280px;width:74%;padding:10px;border-width:8px}.menu-section .filter{padding:10px 14px;font-size:11px}}
+
+.coffee-menu-group[hidden]{display:none!important}
