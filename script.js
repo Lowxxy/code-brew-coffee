@@ -7,7 +7,8 @@
     initHeaderMenu();
     initMenuFilters();
     initFooterYear();
-    initLiveECG();
+    initLiveECG("codebrew-live-ecg");
+    initLiveECG("codebrew-mobile-ecg");
   });
 
   function initHeaderMenu() {
@@ -57,8 +58,8 @@
     if (year) year.textContent = new Date().getFullYear();
   }
 
-  function initLiveECG() {
-    const canvas = document.getElementById('codebrew-live-ecg');
+  function initLiveECG(id) {
+    const canvas = document.getElementById(id);
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -73,7 +74,7 @@
     function resize() {
       const box = container.getBoundingClientRect();
       width = Math.max(240, Math.round(box.width || window.innerWidth));
-      height = Math.max(190, Math.round(box.height || 300));
+      height = Math.max(120, Math.round(box.height || 300));
       dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);

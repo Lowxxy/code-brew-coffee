@@ -1,1 +1,7 @@
-Code Brew V14 mobile phone polish based on V13. Replace index.html and script.js in your GitHub Pages project. This version keeps the desktop layout intact while improving the hero layout, filter chips, and heartbeat visibility on phones.
+CODE BREW V15 - MOBILE LAYOUT FIX
+
+Replaces only index.html and script.js from V13/V14.
+Desktop layout is unchanged.
+Mobile: full-width headline, compact two-column description + logo, full-width actions/notice, no bottom overlay, and a dedicated live heartbeat strip before the menu card. The V13 ECG waveform is retained and rendered in the mobile strip.
+
+Upload BOTH files to the root of GitHub repo and commit. Keep existing styles.css and all logo files unchanged.
