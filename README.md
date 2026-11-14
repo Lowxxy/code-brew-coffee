@@ -47,3 +47,11 @@ The featured image area currently uses designed placeholder tiles. Once real pro
 - `styles.css` — desktop and mobile styling
 - `script.js` — working menu filters and mobile navigation
 - `assets/` — five transparent logos
+
+
+## November 14, 2026 update: full logo + blue menu + moving ECG
+- `logo-wordmark-full.png` contains the original winged logo with transparent margins so its tips do not clip.
+- Header and menu intro now use that padded original logo.
+- Menu retains all existing categories, placeholders, links, and filters while adding matching blue accents.
+- Blue animated SVG pulse scrolls behind the menu paper; it is non-interactive and respects reduced-motion settings.
+- To deploy, upload/replace the files in this folder at the repository root, including the new PNG.

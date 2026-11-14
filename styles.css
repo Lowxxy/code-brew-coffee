@@ -595,3 +595,57 @@ body{background:#f6ede1}
 @media(max-width:620px){.menu-section{padding:72px 16px}.cafe-menu-intro h2{font-size:42px!important}.cafe-menu-lede br{display:none}.cafe-menu-ornament{letter-spacing:1.5px;font-size:9px}.coffee-menu-columns{grid-template-columns:1fr;gap:26px;padding:24px 28px 28px}.coffee-menu-paper::before{inset:9px}.cafe-paper-top,.cafe-paper-bottom{font-size:8px;letter-spacing:.5px;gap:8px;padding-left:12px;padding-right:12px}.cafe-paper-bottom{margin:0 20px}.coffee-menu-section-heading h3{font-size:31px}.coffee-menu-special{min-height:210px}.hero-art>img{max-height:280px;max-width:280px;width:74%;padding:10px;border-width:8px}.menu-section .filter{padding:10px 14px;font-size:11px}}
 
 .coffee-menu-group[hidden]{display:none!important}
+
+/* ===============================================================
+   CODE BREW | BLUE BRAND + ANIMATED HEARTBEAT (2026-11-14)
+   Maintains the original coffeehouse layout and placeholder copy.
+   =============================================================== */
+:root { --codebrew-brand-blue:#0866d7; --codebrew-blue-dark:#124e91; --codebrew-blue-soft:#e8f3ff; }
+
+/* Make every pixel of the full winged logo visible, including at mobile sizes. */
+.site-header { overflow:visible; }
+.site-header .brand { width:clamp(165px,15vw,235px); height:100%; min-width:0; overflow:visible; flex-shrink:0; }
+.site-header .brand img { width:100%; height:100%; max-height:74px; object-fit:contain; object-position:center left; display:block; }
+.cafe-menu-logo { width:205px; max-height:none; height:auto; }
+
+/* Animated waveform floats behind the menu, never over the copy or buttons. */
+.menu-section { position:relative; isolation:isolate; overflow:hidden; }
+.menu-section .cafe-menu-shell { position:relative; z-index:1; }
+.menu-ecg { position:absolute; top:55%; left:0; width:100%; height:245px; transform:translateY(-50%); z-index:0; pointer-events:none; overflow:hidden; }
+.menu-ecg svg { display:block; width:200%; height:100%; animation:codebrew-ecg-scroll 22s linear infinite; }
+.menu-ecg-line { fill:none; stroke:#0866d7; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; filter:drop-shadow(0 0 5px #0866d744); opacity:.95; }
+@keyframes codebrew-ecg-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* Blue accents complement, rather than replace, the cafe's warm paper palette. */
+.cafe-menu-ornament,.cafe-menu-kicker { color:var(--codebrew-blue-dark); }
+.cafe-menu-intro h2 em { color:var(--codebrew-brand-blue); }
+.cafe-menu-status { color:var(--codebrew-blue-dark); border-color:#9dc6ef; background:#f5faff; }
+.cafe-menu-status span { color:var(--codebrew-brand-blue); }
+.menu-section .filter { color:var(--codebrew-blue-dark); border-color:#8cb9e9; background:#fffaf3; }
+.menu-section .filter:hover { color:var(--codebrew-brand-blue); border-color:var(--codebrew-brand-blue); }
+.menu-section .filter.active,.menu-section .filter.active:hover { background:var(--codebrew-brand-blue); border-color:var(--codebrew-brand-blue); color:#fff; box-shadow:0 7px 17px #0866d72e; }
+.coffee-menu-paper { border-color:#91b9dc; box-shadow:0 25px 70px #3f50622b,0 4px 12px #355e8e16; }
+.coffee-menu-paper::before { border-color:#c3d9ed; }
+.cafe-paper-top,.cafe-paper-bottom { color:var(--codebrew-blue-dark); }
+.cafe-paper-top span:nth-child(2),.cafe-paper-bottom span:nth-child(2) { color:var(--codebrew-brand-blue); }
+.coffee-menu-group { border-bottom-color:#cddded; }
+.coffee-menu-num { background:#e7f2ff; color:var(--codebrew-blue-dark); }
+.coffee-menu-section-heading h3 { color:#173e69; }
+.coffee-menu-section-heading p { color:var(--codebrew-brand-blue); }
+.coffee-menu-subline { color:#876b55; }
+.coffee-menu-dots { border-bottom-color:#c0d4e9; }
+.coffee-menu-item strong { color:var(--codebrew-brand-blue); }
+.coffee-menu-new { background:linear-gradient(90deg,#eaf4ff,#f5ebdf); color:#62778d; border-left:3px solid var(--codebrew-brand-blue); }
+.coffee-menu-new>span:first-child { color:var(--codebrew-blue-dark); }
+.coffee-menu-blank { color:#7f9cbe; }
+.coffee-menu-special { background:linear-gradient(145deg,#e4f1ff,#f2e0c9); border-color:#a6c6e4; }
+.coffee-menu-special p { color:#174b80; }
+.coffee-menu-special small { color:#54718a; }
+.cafe-menu-footnote { color:#5e6c80; }
+@media(max-width:720px) {
+  .site-header .brand { width:180px; }
+  .site-header .brand img { max-height:67px; }
+  .menu-ecg { top:58%; height:170px; }
+  .menu-ecg-line { stroke-width:3.5; opacity:.7; }
+}
+@media(prefers-reduced-motion:reduce) { .menu-ecg svg { animation:none; } }
