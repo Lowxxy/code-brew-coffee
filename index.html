@@ -38,6 +38,225 @@
   </style>
 
   <script src="script.js?v=CODEBREW-V13-ACTUAL-BEATS-20261114" defer></script>
+
+  <style id="codebrew-mobile-v14-tune">
+    @media (max-width: 768px) {
+      body { overflow-x: hidden; }
+
+      .site-header {
+        padding: 14px 18px !important;
+        gap: 12px !important;
+      }
+
+      .brand img {
+        width: 88px !important;
+        height: auto !important;
+      }
+
+      .hero-content {
+        padding: 24px 18px 10px !important;
+      }
+
+      .hero-columns {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.08fr) minmax(120px, 0.92fr) !important;
+        align-items: center !important;
+        gap: 14px !important;
+      }
+
+      .hero-copy,
+      .hero-art {
+        min-width: 0 !important;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(3.1rem, 12vw, 4.5rem) !important;
+        line-height: 0.92 !important;
+        letter-spacing: -0.03em !important;
+        margin-bottom: 14px !important;
+      }
+
+      .hero-copy p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        max-width: none !important;
+      }
+
+      .hero-actions {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        gap: 10px !important;
+        align-items: center !important;
+      }
+
+      .hero-actions .btn {
+        min-width: 0 !important;
+        width: 100% !important;
+        padding: 16px 18px !important;
+      }
+
+      .hero-actions .text-link {
+        justify-self: end !important;
+        white-space: nowrap !important;
+        font-size: 0.92rem !important;
+      }
+
+      .hero-note {
+        margin-top: 16px !important;
+      }
+
+      .hero-art {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      .hero-art img {
+        width: min(42vw, 235px) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important;
+      }
+
+      .hero-bottom {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 14px 18px !important;
+        font-size: 0.68rem !important;
+      }
+
+      .hero-bottom > :last-child {
+        text-align: right !important;
+        white-space: nowrap !important;
+      }
+
+      .menu-section {
+        padding-top: 42px !important;
+        padding-bottom: 46px !important;
+      }
+
+      .menu-ecg {
+        inset: 200px 0 80px 0 !important;
+        height: auto !important;
+        opacity: 0.96 !important;
+      }
+
+      .cafe-menu-intro {
+        padding: 0 18px 14px !important;
+      }
+
+      .cafe-menu-logo {
+        width: min(42vw, 210px) !important;
+        max-width: 100% !important;
+        margin: 0 auto 16px !important;
+      }
+
+      .cafe-menu-intro h2 {
+        font-size: clamp(2.25rem, 9vw, 3.2rem) !important;
+        line-height: 0.96 !important;
+      }
+
+      .cafe-menu-lede {
+        max-width: 34ch !important;
+        margin-inline: auto !important;
+      }
+
+      .cafe-menu-status {
+        width: auto !important;
+        max-width: 100% !important;
+        padding: 14px 18px !important;
+      }
+
+      .cafe-menu-filter-wrap {
+        width: 100% !important;
+      }
+
+      .menu-filters {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        padding: 0 18px 12px !important;
+        scroll-snap-type: x proximity !important;
+      }
+
+      .menu-filters::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .menu-filters .filter {
+        flex: 0 0 auto !important;
+        min-width: max-content !important;
+        white-space: nowrap !important;
+        padding: 13px 18px !important;
+        scroll-snap-align: start !important;
+      }
+
+      .coffee-menu-paper {
+        position: relative !important;
+        z-index: 2 !important;
+        width: auto !important;
+        max-width: calc(100% - 34px) !important;
+        margin: 0 auto !important;
+      }
+
+      .coffee-menu-columns {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      .feature-heading,
+      .story-section,
+      .launch-section,
+      .photo-grid {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero-columns {
+        grid-template-columns: minmax(0, 1fr) minmax(110px, 0.86fr) !important;
+        gap: 10px !important;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.7rem, 12vw, 4rem) !important;
+      }
+
+      .hero-actions {
+        grid-template-columns: minmax(0, 1fr) !important;
+        align-items: start !important;
+      }
+
+      .hero-actions .text-link {
+        justify-self: start !important;
+      }
+
+      .hero-art img {
+        width: min(40vw, 190px) !important;
+      }
+
+      .hero-bottom {
+        font-size: 0.64rem !important;
+      }
+
+      .menu-ecg {
+        inset: 230px 0 90px 0 !important;
+      }
+
+      .coffee-menu-paper {
+        max-width: calc(100% - 22px) !important;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <div class="announcement"><span class="pulse-dot"></span> IN DEVELOPMENT <span class="sep">/</span> SOMETHING GOOD IS BREWING <span class="pulse-dot"></span></div>

@@ -1,5 +1,1 @@
-CODE BREW V11 - mobile-only polish.
-
-Desktop matches V10. Phone screens use a smaller main logo, reduced vertical spacing, and horizontal swipeable menu category buttons.
-
-Upload every file directly into the root of the GitHub Pages repository.
+Code Brew V14 mobile phone polish based on V13. Replace index.html and script.js in your GitHub Pages project. This version keeps the desktop layout intact while improving the hero layout, filter chips, and heartbeat visibility on phones.
