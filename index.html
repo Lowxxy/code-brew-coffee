@@ -93,6 +93,31 @@
 }
 </style>
 
+
+<style id="codebrew-mobile-v16-hero">
+/* Mobile-only hero composition. Desktop and mobile ECG remain unchanged. */
+@media (max-width: 720px) {
+  .hero-content { padding: 28px 18px 22px !important; }
+  .hero .eyebrow { justify-content: center !important; text-align: center !important; margin: 0 auto 16px !important; font-size: clamp(8px,2.2vw,10px) !important; }
+  .hero-columns { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 0 !important; justify-items: center !important; align-items: start !important; }
+  .hero-copy { display: contents !important; }
+  .hero-copy h1 { grid-column: 1 !important; grid-row: 1 !important; text-align: center !important; justify-self: center !important; font-size: clamp(48px,12.4vw,76px) !important; line-height: .89 !important; letter-spacing: -.6px !important; margin: 0 auto 14px !important; max-width: 100% !important; }
+  .hero-art { grid-column: 1 !important; grid-row: 2 !important; display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; height: auto !important; min-height: 0 !important; max-height: none !important; margin: 0 auto 10px !important; padding: 0 !important; }
+  .hero-art > img { width: auto !important; height: auto !important; max-width: min(46vw,180px) !important; max-height: 160px !important; object-fit: contain !important; margin: 0 auto !important; filter: none !important; }
+  .hero-copy p { grid-column: 1 !important; grid-row: 3 !important; text-align: center !important; justify-self: center !important; width: 100% !important; max-width: 345px !important; margin: 0 auto 17px !important; font-size: clamp(12px,3.35vw,15px) !important; line-height: 1.5 !important; }
+  .hero-actions { grid-column: 1 !important; grid-row: 4 !important; display: flex !important; justify-content: center !important; align-items: center !important; flex-wrap: wrap !important; gap: 12px !important; margin: 0 auto 15px !important; width: 100% !important; }
+  .hero-actions .btn { flex: 0 1 auto !important; width: auto !important; min-height: 43px !important; padding: 13px 14px !important; font-size: 9px !important; }
+  .hero-actions .text-link { font-size: 9px !important; white-space: nowrap !important; }
+  .hero-note { grid-column: 1 !important; grid-row: 5 !important; justify-self: center !important; margin: 0 auto !important; padding: 10px 12px !important; width: min(100%,440px) !important; max-width: 100% !important; }
+}
+@media(max-width:360px){
+  .hero-copy h1 {font-size: clamp(43px,12vw,52px) !important;}
+  .hero-art > img { max-height: 132px !important; max-width: 47vw !important; }
+  .hero-actions { gap: 9px !important; }
+  .hero-actions .btn { font-size: 8px !important; padding: 12px 10px !important; }
+  .hero-actions .text-link { font-size: 8px !important; }
+}
+</style>
 </head>
 <body>
   <div class="announcement"><span class="pulse-dot"></span> IN DEVELOPMENT <span class="sep">/</span> SOMETHING GOOD IS BREWING <span class="pulse-dot"></span></div>
