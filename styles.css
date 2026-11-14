@@ -745,3 +745,14 @@ body{background:#f6ede1}
     padding: 0 !important;
   }
 }
+
+/* FINAL REQUESTED CHANGE: full vertical header logo, no other logo changed */
+.site-header { height:116px !important; min-height:116px !important; overflow:visible !important; }
+.site-header .brand { width:108px !important; min-width:108px !important; max-width:108px !important; height:108px !important; display:flex !important; align-items:center !important; justify-content:center !important; overflow:visible !important; flex:0 0 auto !important; }
+.site-header .brand img { display:block !important; width:auto !important; height:104px !important; max-width:104px !important; max-height:104px !important; object-fit:contain !important; object-position:center !important; }
+@media (max-width:720px) {
+.site-header { height:95px !important; min-height:95px !important; }
+.site-header .brand { width:84px !important; min-width:84px !important; max-width:84px !important; height:88px !important; }
+.site-header .brand img { width:auto !important; height:84px !important; max-width:84px !important; max-height:84px !important; }
+.site-header .nav { top:95px !important; }
+}

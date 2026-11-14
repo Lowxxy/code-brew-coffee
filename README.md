@@ -1,9 +1,8 @@
-CODE BREW V8 - HERO LOGO ONLY
+CODE BREW — targeted changes
 
-Restores original horizontal CODE BREW winged logos in the header and above the menu (same as V6).
+1. Header only: shows codebrew-header-logo.png, copied from the supplied logo-primary(1).png (cup, wings, CODE BREW and coffee subtitle).
+2. Removed both floating hero bubbles: COFFEE IS CALLING and BREWED TO BRING YOU BACK.
+3. Removed the little MADE FOR THE DAILY GRIND slogan just above the menu logo.
+4. Kept the full hero logo, menu logo, rest of layout and animations unchanged.
 
-Only changes the large HERO logo on the right of the homepage: uses the existing full coffee-IV-and-wings art, with transparent padding and NO circle, orbit, white disk, border, or shadow.
-
-Upload every file at the root of the repository, not inside a folder. The new image file codebrew-hero-full-logo.png is required.
-
-No other design or heartbeat changes were intended.
+Upload all files inside this folder to the root of your code-brew-coffee GitHub repository.
